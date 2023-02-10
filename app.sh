@@ -4,6 +4,11 @@
 function main_app {
   # Mostrar mensaje de bienvenida
   if ! command -v zenity &> /dev/null; then
+    echo "zenity no está instalado"
+    exit 1
+  fi
+  
+  if ! command -v ffmpeg &> /dev/null; then
     echo "ffmpeg no está instalado"
     exit 1
   fi
