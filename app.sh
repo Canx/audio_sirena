@@ -2,7 +2,7 @@
 
 # Función para mostrar la interfaz
 function main_app {
-  # Mostrar mensaje de bienvenida
+  # Comprobar comandos instalados
   if ! command -v zenity &> /dev/null; then
     echo "zenity no está instalado"
     exit 1
@@ -78,12 +78,6 @@ function cortar {
     exit 1
   fi
 
-  # Verificar si ffmpeg está instalado
-  if ! command -v ffmpeg &> /dev/null; then
-    echo "ffmpeg no está instalado"
-    exit 1
-  fi
-
   # Recortar archivo a 1 minuto
   ffmpeg -i "$1" -t 60 "$2"
 
@@ -94,12 +88,6 @@ function normalizar {
   # Verificar si el archivo especificado existe
   if [ ! -f "$1" ]; then
     echo "El archivo especificado no existe"
-    exit 1
-  fi
-
-  # Verificar si ffmpeg está instalado
-  if ! command -v ffmpeg &> /dev/null; then
-    echo "ffmpeg no está instalado"
     exit 1
   fi
 
